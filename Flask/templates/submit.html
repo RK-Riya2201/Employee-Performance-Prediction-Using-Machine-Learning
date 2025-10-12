@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result - Employee Productivity</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #3f51b5, #5c6bc0);
+            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+            background-repeat: repeat;
+            color: #333;
+        }
+
+        .header {
+            background-color: #1a237e;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        .header nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        .header nav a.active,
+        .header nav a:hover {
+            background-color: #283593;
+        }
+
+        .result-container {
+            max-width: 700px;
+            margin: 50px auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .result-container h2 {
+            color: #1a237e;
+            margin-bottom: 20px;
+        }
+
+        .prediction-badge {
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 8px;
+            margin-top: 20px;
+            color: white;
+        }
+
+        .low {
+            background-color: #ff9800;
+        }
+
+        .medium {
+            background-color: #2196F3;
+        }
+
+        .high {
+            background-color: #4CAF50;
+        }
+
+        .score {
+            font-size: 1em;
+            margin-top: 10px;
+            color: #333;
+        }
+
+        .back-button {
+            margin-top: 30px;
+        }
+
+        .back-button a {
+            background-color: #1a237e;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .back-button a:hover {
+            background-color: #283593;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Employee Productivity Prediction Using ML</h1>
+        <nav>
+            <a href="{{ url_for('home_page') }}">Home</a>
+            <a href="{{ url_for('about_page') }}">About</a>
+            <a href="{{ url_for('predict_page') }}" class="active">Predict</a>
+        </nav>
+    </div>
+
+    <div class="result-container">
+        <h2>Prediction Result</h2>
+
+        <div class="prediction-badge 
+            {% if prediction_score < 0.3 %}low
+            {% elif prediction_score < 0.8 %}medium
+            {% else %}high{% endif %}">
+            {{ prediction_text }}
+        </div>
+
+        <div class="score">
+            Predicted Productivity Score: {{ prediction_score | round(2) }}
+        </div>
+
+        <div class="back-button">
+            <a href="{{ url_for('predict_page') }}">Predict Again</a>
+        </div>
+    </div>
+
+</body>
+
+</html>
