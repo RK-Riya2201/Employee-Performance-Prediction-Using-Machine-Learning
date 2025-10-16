@@ -22,7 +22,7 @@ The **predicted productivity** (e.g., *Low / Medium / High*) is displayed instan
 | **Data Visualization & Analysis** | Explored data using Matplotlib & Seaborn — performed correlation, distribution, and trend analysis. |
 | **Data Preprocessing** | Cleaned null values, handled date and department columns, encoded categorical variables, and scaled features. |
 | **Model Building** | Implemented multiple ML algorithms (Linear Regression, Random Forest, XGBoost) for prediction. |
-| **Model Evaluation** | Compared model performance using MAE, MSE, and R² metrics. |
+| **Model Evaluation** | Compared model performance using MAE, MSE, and R2 score metrics. |
 | **Model Deployment** | Saved the best model using Pickle and deployed it using Flask web framework. |
 | **UI Development** | Created HTML-based form for user interaction. |
 | **Integration** | Connected UI with the backend model for real-time predictions. |
